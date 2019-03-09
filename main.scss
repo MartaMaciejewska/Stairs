@@ -1,0 +1,63 @@
+.staircase {
+  width:950px;
+  background-color: black;
+  height: 600px;
+  position:relative;
+}
+
+.step {
+  height: 30px;
+  width: 30px;
+  border: 10px solid #442E06;
+  position: absolute;
+  border-right: none;
+  border-bottom: none;
+  @for $i from 1 through 30 {
+    &:nth-of-type(#{$i}) {
+      @if $i%3==0 {
+        top: 30*$i + px;
+        left: 900 - 200*($i/3) + px;
+        width: 110px;
+        &:after {
+          content: "";
+          position: absolute;
+          top: -76px;
+          left: 0;
+          transform: translateX(50%);
+          width: 30px;
+          height: 60px;
+          border-radius: 50% 50% 0 0;
+          background-color: #442E06;
+          border: 3px solid darkgrey;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          top: -35px;
+          left: 36px;
+          height: 4px;
+          width: 12px;
+          background-color: darkgoldenrod;
+          border-radius: 0 40% 40% 0;
+          z-index: 2;
+        }
+        +div {
+            left: 900 - 240*($i/3) + 40*($i/3)+ px;
+          transform: translateX(-100%);
+            + div {
+              left: 860 - 240*($i/3) + 40*($i/3) + px;
+              transform: translateX(-100%);
+            }
+          }
+        }
+      @else {
+        top: 30*$i + px;
+        left: 900 - (40*$i) + px;
+        }
+       }
+      }
+    }
+
+
+
+
